@@ -18,19 +18,15 @@ function Control(props) {
   const [pause, setPause] = useState(true);
 
   const App = useContext(IndexContext);
-
-  const storageRepeat = JSON.parse(localStorage.getItem("isRepeat"));
-  const storageRandom = JSON.parse(localStorage.getItem("isRandom"));
-
   const DashBoard = useContext(DashBoardContext);
 
   const nextBtn = useRef("");
   const prevBtn = useRef("");
   const repeatBtn = useRef("");
 
-  const randomBtn = () => `btn btn-random ${storageRandom ? "active" : ""}`;
+  const randomBtn = () => `btn btn-random ${App.isRandom ? "active" : ""}`;
   const repeatBtnClass = () =>
-    `btn btn-repeat ${storageRepeat ? "active" : ""}`;
+    `btn btn-repeat ${App.isRepeat ? "active" : ""}`;
 
   useEffect(() => {
     DashBoard.setNextBtn(nextBtn.current);
@@ -39,7 +35,6 @@ function Control(props) {
   // Handle Buttons
   const handleRepeat = () => {
     App.setIsRepeat(!App.isRepeat);
-    localStorage.setItem("isRepeat", JSON.stringify(App.isRepeat));
   };
 
   const handlePrev = () => {
@@ -73,8 +68,6 @@ function Control(props) {
 
   const handleRandom = () => {
     App.setIsRandom(!App.isRandom);
-    localStorage.setItem("isRandom", JSON.stringify(App.isRandom));
-
   };
 
   return (

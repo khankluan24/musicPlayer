@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext} from "react";
 import "./App.scss";
 
 import { default as music } from "~/assets/music";
@@ -61,7 +61,6 @@ function App() {
   const [isRepeat, setIsRepeat] = useState(false);
   const [scrollView, setScrollView] = useState(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  
 
   const playRandomSong = () => {
     let randomSong;
@@ -84,9 +83,7 @@ function App() {
           scrollView,
           setScrollView,
           isPlaying,
-          setIsPlaying,
-          // setConfig,
-          // setStorage
+          setIsPlaying
         }}
       >
         <DashBoard data={data[currentIndex]} songList={data} />

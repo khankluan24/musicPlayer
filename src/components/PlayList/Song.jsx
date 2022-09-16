@@ -1,4 +1,4 @@
-import { useContext, useRef, useEffect, useState } from "react";
+import { useContext, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons";
 
@@ -13,17 +13,6 @@ function Song({ receiveData, songIndex }) {
   const url = (data) => `url(${data})`;
   const songClass = `song ${App.currentIndex === songIndex ? "active" : ""}`;
 
-
- 
-
-  useEffect(() => {
-    // if (songRef.current.getAttribute("class").includes("active")) {
-    //   songRef.current.scrollIntoView({
-    //     behavior: "smooth",
-    //     block: "nearest",
-    //   });
-    // }
-  }, [songRef]);
 
   return (
     <div className={songClass} ref={songRef} data-index={songIndex} >

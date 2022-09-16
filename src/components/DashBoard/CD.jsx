@@ -1,18 +1,18 @@
-import { useRef, useEffect, useState, useContext } from "react";
+import { useRef, useEffect, useContext } from "react";
+
 import { IndexContext } from "~/App";
 import "./DashBoard.scss";
 
-function CD({ image}) {
+function CD({ image }) {
   const cdRef = useRef("");
   const cdThumbRef = useRef("");
   const imgUrl = (data) => `url(${data})`;
   const App = useContext(IndexContext);
 
-  // Handel Scroll Y
   useEffect(() => {
     const cd = cdRef.current;
     const cdWidth = cd.offsetWidth;
-
+    // Handel Scroll Y
     document.onscroll = () => {
       const scrollTop =
         window.scrollY ||
@@ -22,21 +22,17 @@ function CD({ image}) {
       cd.style.width = newCdWidth > 0 ? newCdWidth + "px" : 0;
       cd.style.opacity = newCdWidth / cdWidth;
     };
-  }, [cdRef]);
 
-  // Handle CD spin
-  useEffect(() => {
-    const cdThumb = cdThumbRef.current;
-    let cdThumbAnimate = cdThumb.animate(
-      { transform: "rotate(360deg)" },
-      {
-        duration: 5000,
-        iterations: Infinity,
+    // Handle CD spin
+    const delay = () => {
+      if (App.isPlaying) {
+        cdThumbRef.current.classList.add("rotate");
+      } else {
+        cdThumbRef.current.classList.remove("rotate");
       }
-    );
-
-    App.isPlaying ? cdThumbAnimate.play() : cdThumbAnimate.pause();
-  }, [cdThumbRef, App.isPlaying]);
+    };
+    setTimeout(delay, 1000);
+  }, [cdRef, cdThumbRef, App.isPlaying]);
 
   return (
     <div className="cd" ref={cdRef}>
