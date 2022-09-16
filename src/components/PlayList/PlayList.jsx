@@ -1,21 +1,35 @@
+import { useContext } from "react";
+
+import { IndexContext } from "~/App";
 import "../../App.scss";
 import "./PlayList.scss";
-import Thumb from "./Thumb";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faEllipsisH
-} from "@fortawesome/free-solid-svg-icons";
-import Body from "./Body";
-function PlayList() {
+import Song from "./Song";
+
+function PlayList({ data }) {
+  const App = useContext(IndexContext);
+
+  const renderSongs = () => {
+    return data.map((song, index) => (
+      <Song receiveData={song} key={index} songIndex={index} />
+    ));
+  };
+
+  // Click song to play
+  const playSong = (e) => {
+    const songNode = e.target.closest(".song:not(.active)");
+    if (songNode) {
+      if (!e.target.closest(".option")) {
+        App.setCurrentIndex(parseInt(songNode.dataset.index))
+        App.setIsPlaying(true)
+      } else {
+        console.log("False");
+      }
+    }
+  };
+
   return (
-    <div className="playlist">
-      <div className="song">
-        <Thumb />
-        <Body />
-        <div className="option">
-          <FontAwesomeIcon className="icon" icon={faEllipsisH} />
-        </div>
-      </div>
+    <div className="playlist" onClick={(e) => playSong(e)}>
+      {renderSongs()}
     </div>
   );
 }

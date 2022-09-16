@@ -10,22 +10,10 @@
   width: 480px;
 }
 
-.player .icon-pause {
-  display: none;
-}
-
-.player.playing .icon-pause {
-  display: inline-block;
-}
-
-.player.playing .icon-play {
-  display: none;
-}
-
 .song.active .option,
 .song.active .author,
 .song.active .title {
-  color: #fff;
+  color: #fff !important;
 }
 
 .icon:not(.icon-play, .icon-pause) {
