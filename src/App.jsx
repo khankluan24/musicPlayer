@@ -37,7 +37,7 @@ function App() {
       image: "https://i.ytimg.com/vi/G3uNcIJAQC4/0.jpg",
     },
     {
-      name: "BARBIE GIRL (BOOMSOUNDS REMIX)",
+      name: "Barbie Girl (Boomsounds Remix)",
       singer: "AQUA",
       path: music.song5,
       image: "https://i.ytimg.com/vi/RpRRtaM91eo/0.jpg",

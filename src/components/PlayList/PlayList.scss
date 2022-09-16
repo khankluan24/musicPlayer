@@ -30,7 +30,11 @@
       padding: 0 16px;
       .title {
         font-size: 20px;
+        text-transform:lowercase;
         color: var(--text-color);
+        &:first-letter {
+          text-transform: uppercase !important
+        }
       }
       .author {
         font-size: 14px;
