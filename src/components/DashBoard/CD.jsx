@@ -16,22 +16,14 @@ function CD({ image }) {
     document.onscroll = () => {
       const scrollTop =
         window.scrollY ||
-        document.documentElement.scrollTop ||
-        window.pageYOffset;
+        document.documentElement.scrollTop 
+        // window.pageYOffset;
       const newCdWidth = cdWidth - scrollTop;
+      console.log('cdWidth', cdWidth,'new cdWidth',newCdWidth)
       cd.style.width = newCdWidth > 0 ? newCdWidth + "px" : 0;
       cd.style.opacity = newCdWidth / cdWidth;
     };
 
-    // Handle CD spin
-    const delay = () => {
-      if (App.isPlaying) {
-        cdThumbRef.current.classList.add("rotate");
-      } else {
-        cdThumbRef.current.classList.remove("rotate");
-      }
-    };
-    setTimeout(delay, 1000);
   }, [cdRef, cdThumbRef, App.isPlaying]);
 
   return (

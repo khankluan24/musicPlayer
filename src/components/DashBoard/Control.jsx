@@ -15,7 +15,6 @@ import "./DashBoard.scss";
 import "../../App.scss";
 
 function Control(props) {
-  const [pause, setPause] = useState(true);
 
   const App = useContext(IndexContext);
   const DashBoard = useContext(DashBoardContext);
@@ -25,8 +24,7 @@ function Control(props) {
   const repeatBtn = useRef("");
 
   const randomBtn = () => `btn btn-random ${App.isRandom ? "active" : ""}`;
-  const repeatBtnClass = () =>
-    `btn btn-repeat ${App.isRepeat ? "active" : ""}`;
+  const repeatBtnClass = () => `btn btn-repeat ${App.isRepeat ? "active" : ""}`;
 
   useEffect(() => {
     DashBoard.setNextBtn(nextBtn.current);
@@ -51,8 +49,7 @@ function Control(props) {
   };
 
   const handleTrigger = () => {
-    setPause(!pause);
-    App.setIsPlaying(pause);
+    App.setIsPlaying(!App.isPlaying)
   };
 
   const handleNext = () => {
@@ -83,7 +80,7 @@ function Control(props) {
         <FontAwesomeIcon className="icon" icon={faStepBackward} />
       </div>
       <div onClick={() => handleTrigger()} className="btn btn-toggle-play">
-        {pause && !App.isPlaying ? (
+        {!App.isPlaying ? (
           <FontAwesomeIcon className="icon icon-play" icon={faPlay} />
         ) : (
           <FontAwesomeIcon className="icon icon-pause" icon={faPause} />

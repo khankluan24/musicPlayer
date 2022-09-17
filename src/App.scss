@@ -1,21 +1,12 @@
 @import "./index.scss";
 
-#root {
-  display: flex;
-  justify-content: center;
-}
-
 .player {
-  position: relative;
-  width: 480px;
+  max-width: 480px;
+  margin: 0 auto;
 }
 
 .song.active .option,
 .song.active .author,
 .song.active .title {
   color: #fff !important;
-}
-
-.icon:not(.icon-play, .icon-pause) {
-  transform: scale(1.3);
 }

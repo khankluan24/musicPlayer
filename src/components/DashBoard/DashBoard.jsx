@@ -22,6 +22,7 @@ function DashBoard({ data, songList }) {
     } else {
       const seekTime = (audioRef.current.duration / 100) * e.target.value;
       audioRef.current.currentTime = seekTime;
+      App.setIsPlaying(true)
       audioRef.current.play();
     }
   };
